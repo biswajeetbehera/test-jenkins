@@ -85,7 +85,7 @@ pipeline {
       steps {
         sh """
             printenv
-            sleep 50
+            sleep 120
           """
       }
     }
