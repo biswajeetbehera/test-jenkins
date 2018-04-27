@@ -40,7 +40,7 @@ pipeline {
       disableConcurrentBuilds()
     // lock based on branch name, pull requests use branch name
       // lock resource: "${getSitename()}"
-      lock(resource: "${getSitename()}", inversePrecedence: true)
+      lock(resource: "test-jenkins", inversePrecedence: true)
     // timeout after 8 hours
       timeout(time: 8, unit: 'HOURS')
     // keep 7 jobs
