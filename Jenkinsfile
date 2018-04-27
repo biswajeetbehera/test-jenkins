@@ -40,11 +40,7 @@ pipeline {
       disableConcurrentBuilds()
     // lock based on branch name, pull requests use branch name
       // lock resource: "${getSitename()}"
-      milestone()
-      lock(resource: "${getSitename()}", inversePrecedence: true) {
-        echo "locked step"
-        milestone()
-      }
+      lock(resource: "${getSitename()}", inversePrecedence: true)
     // timeout after 8 hours
       timeout(time: 8, unit: 'HOURS')
     // keep 7 jobs
