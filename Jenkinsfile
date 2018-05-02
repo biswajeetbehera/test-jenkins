@@ -3,7 +3,12 @@
 @Library(['XENO_JENKINS', 'XENO_DEPLOY']) _
 def getLabel() {
     // Which server to run this on.
-    return "php5a"
+    wrap([$class: 'ConsulKVReadWrapper',
+      reads: [
+      [debugMode: 'DISABLED', envKey: 'new_label', key: "drupal7/${getSitename()}/server"]
+      ]]) {
+      return env.new_label
+    }
 }
 // Choose the site name based on git name and if it is a Pull Request or branch.
 def getSitename() {
